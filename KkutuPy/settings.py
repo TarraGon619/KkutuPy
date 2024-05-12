@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['port-0-kkutupy-128y2k2llvda9o5b.sel5.cloudtype.app', 'localhost']
 
+CSRF_TRUSTED_ORIGINS = ['https://port-0-kkutupy-128y2k2llvda9o5b.sel5.cloudtype.app']
 
 # Application definition
 
