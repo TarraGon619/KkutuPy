@@ -15,10 +15,10 @@
 
     <div class="lobby">        
         <ul class="roomList">
-            <!-- {% for room in rooms %}
-                <ol>{% for r in room %}{{r}} {% endfor %}</ol>
-            {% endfor %} -->
-            <ol>{{Rname}} | {{Rround}}라운드 | {{Rtime}}초 <span>1 / 8</span></ol>
+            {% for room in rooms %}
+            <ol><a><span id="roomName">{{room.roomName}}</span><span id="roomMax">1 / {{room.roomMax}}</span><span id="roomInfo">{{room.roomRound}}라운드 / {{room.roomTime}}초</span></a></ol>
+            {% endfor %}
+            <!-- <ol><a>{{Rname}} | {{Rround}}라운드 | {{Rtime}}초 <span>1 / {{Rmax}}</span></a></ol> -->
         </ul>
 
         <button id="modalOpenButton">방 생성하기</button>

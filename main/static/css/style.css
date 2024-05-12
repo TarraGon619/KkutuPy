@@ -64,12 +64,28 @@ body {
     border-radius: 5px;
     margin-top: 2vh;
     margin-bottom: 2vh;
-    font-weight: bold !important;
 }
-.roomList ol span {
+.roomList > *:hover {
+    background-image: linear-gradient(to top, #fff, #fff4fb);
+}
+.roomList ol span{
     position: absolute;
-    left: 80%;
+    left: 5%;
+    top: 5%;
+}
+.roomList ol #roomName{
+    font-size: 2vw;
+    font-weight: bold;
+}
+.roomList ol #roomMax{
+    left: 85%;
     color: #ff0000;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+.roomList ol #roomInfo{
+    top: 45%;
+    font-size: 1.2vw;
 }
 
 #userButton {
