@@ -1,0 +1,194 @@
+@font-face {
+    font-family: 'CookieRunOTF-Black';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Black00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'CookieRunOTF-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/CookieRunOTF-Regular00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{  
+    transition: all 0.5s;
+    user-select: none;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-image: linear-gradient(to left, #A3D8FF, #FEEFAD);
+}
+
+.roomList > * {
+    cursor: pointer;
+    position: relative;
+    left: 7.5%;
+    width: 85%;
+    height: 25%;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+#logo {
+    display: block;
+    width: 30vh;
+    margin: 0 auto;
+}
+
+.lobby {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 70vw;
+    height: 70vh;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 13px -5px black;
+}
+
+.roomList {
+    position: absolute;
+    top: 7%;
+    left: 3%;
+    width: 60%;
+    height: 85%;
+    background-color: white;
+    border: solid 3px black;
+    border-radius: 10px;
+    overflow-y: auto;
+}
+
+#userButton {
+    cursor: pointer;
+    border: solid 3px black;
+    border-radius: 10px;
+    position: absolute;
+    font-family: 'CookieRunOTF-Black';
+    color: white;
+    font-size: 3vw;
+    top: 53%;
+    left: 67%;
+    width: 30%;
+    height: 40%;
+    background-color: #90D26D;
+}
+
+#userButton:hover {
+    background-color: #0A6847;
+}
+
+/* 방 생성하기 */
+#modalOpenButton {
+    cursor: pointer;
+    border: solid 3px black;
+    border-radius: 10px;
+    position: absolute;
+    font-family: 'CookieRunOTF-Black';
+    color: white;
+    top: 7%;
+    left: 67%;
+    width: 30%;
+    height: 40%;
+    background-color: #FDDE55;    
+    font-size: 3vw;
+}
+
+#modalOpenButton:hover {
+    background-color: #FDA403;
+}
+
+#title {
+    font-size: 3vw;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#modalCloseButton {
+    position: absolute;
+    left: 92%;
+    cursor: pointer;
+    border-radius: 100%;
+    width: 3vw;
+    height: 3vw;
+    font-family: 'CookieRunOTF-Black';
+    background-color: red;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 2vw;
+}
+
+#modalCloseButton:hover {
+    background-color: darkred;
+}
+
+#modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#modalContent {
+    position: absolute;
+    background-color: #ffffff;
+    width: 50vw;
+    height: 70vh;
+    padding: 15px;
+    border-radius: 10px;
+    display: block;
+}
+
+.makeRoom span {
+    font-size: 2vw;
+    padding-left: 1vw;
+}
+
+.makeRoom input, select {
+    position: absolute;
+    left: 40%;
+    width: 28vw;
+    height: 2.5vw;
+    font-size: 1.5vw;
+}
+
+.makeRoom select {
+    width: 28.3vw;
+    height: 2.8vw;
+}
+
+#makeRoomButton {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 10vw;
+    height: 8vh;
+    border: none;
+    color: white;
+    background-color: cornflowerblue;
+    border-radius: 20px;
+    font-size: 1.5vw;
+}
+
+#makeRoomButton:hover {
+    background-color: darkblue;
+}
+
+#modalContainer.hidden {
+    display: none;
+}

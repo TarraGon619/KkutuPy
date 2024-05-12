@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끄투파이</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
+    <link rel="icon" href="static/images/favicon.ico">
+</head>
+<body>
+    {% csrf_token %}
+
+    <img id="logo" src="static/images/logo.png">
+
+    <div class="lobby">        
+        <ul class="roomList">
+            {% for room in rooms %}
+                <ol>{% for r in room %}{{r}} {% endfor %}</ol>
+            {% endfor %}
+        </ul>
+
+        <button id="modalOpenButton">방 생성하기</button>
+        {% if user.is_authenticated %}
+        <button id="userButton" onclick=logout()>{{user.username}}<br>(로그아웃)</button>
+        {% else %}
+        <button id="userButton" onclick=login()>로그인</button>
+        {% endif %}
+        <!-- <button id="dictionary" onclick="window.open('https://terms.naver.com/')">로그인</button> -->
+    </div>
+
+
+    <div id="modalContainer" class="hidden">
+        <div id="modalContent">
+            <button id="modalCloseButton">X</button>
+            <div id="title">방 생성하기</div>
+            <form method="post" class="makeRoom">
+                <br>
+                <span>방 제목</span>
+                <input type="text" name="roomName" placeholder="방 제목">
+                <br><br>
+                <span>비밀번호</span>
+                <input type="text" name="roomPW" placeholder="비밀번호">
+                <br><br>
+                <span>플레이어 수</span>
+                <input type="number" name="roomMax" min="2" max="8" value="8">
+                <br><br>
+                <span>라운드 수</span>
+                <input type="number" name="roomRound" min="2" max="10" value="5">
+                <br><br>
+                <span>라운드 시간</span>
+                <select name="roomTime">
+                    <option value="30">30초</option>
+                    <option value="60" selected>60초</option>
+                    <option value="90">90초</option>
+                </select>
+                <input type="hidden" name="name" value="{{user.username}}">
+                <button id="makeRoomButton" type="submit">확인</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modalOpenButton = document.getElementById('modalOpenButton');
+        const modalCloseButton = document.getElementById('modalCloseButton');
+        const modal = document.getElementById('modalContainer');
+
+        modalOpenButton.addEventListener('click', () => {
+        modal.classList.remove('hidden');
+        });
+
+        modalCloseButton.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        });
+        
+        function login() {
+            location.href="{% url 'users:login' %}"
+        };
+
+        function logout() {
+            location.href="{% url 'users:logout' %}"
+        };
+    </script>
+</body>
+</html>
