@@ -23,18 +23,6 @@ body {
     background-image: linear-gradient(to left, #A3D8FF, #FEEFAD);
 }
 
-.roomList > * {
-    cursor: pointer;
-    position: relative;
-    left: 7.5%;
-    width: 85%;
-    height: 25%;
-    border: solid 1px black;
-    border-radius: 5px;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
-}
-
 #logo {
     display: block;
     width: 30vh;
@@ -63,6 +51,25 @@ body {
     border: solid 3px black;
     border-radius: 10px;
     overflow-y: auto;
+}
+.roomList > * {
+    cursor: pointer;
+    position: relative;
+    /* left: 7.5%; */
+    left: 50%;
+    transform: translate(-50%);
+    width: 85%;
+    height: 25%;
+    border: solid 1px black;
+    border-radius: 5px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-weight: bold !important;
+}
+.roomList ol span {
+    position: absolute;
+    left: 80%;
+    color: #ff0000;
 }
 
 #userButton {

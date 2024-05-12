@@ -15,9 +15,10 @@
 
     <div class="lobby">        
         <ul class="roomList">
-            {% for room in rooms %}
+            <!-- {% for room in rooms %}
                 <ol>{% for r in room %}{{r}} {% endfor %}</ol>
-            {% endfor %}
+            {% endfor %} -->
+            <ol>{{Rname}} | {{Rround}}라운드 | {{Rtime}}초 <span>1 / 8</span></ol>
         </ul>
 
         <button id="modalOpenButton">방 생성하기</button>
@@ -37,7 +38,11 @@
             <form method="post" class="makeRoom">
                 <br>
                 <span>방 제목</span>
-                <input type="text" name="roomName" placeholder="방 제목">
+                {% if user.is_authenticated %}
+                <input type="text" name="roomName" placeholder="{{user.username}}님의 방">
+                {% else %}
+                <input type="text" name="roomName" placeholder="guest님의 방">
+                {% endif %} 
                 <br><br>
                 <span>비밀번호</span>
                 <input type="text" name="roomPW" placeholder="비밀번호">
