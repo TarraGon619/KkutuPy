@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
-</head>
-<body>
-    <form method="post" action="{% url 'users:login' %}">
-        {% csrf_token %}
-        {% include "form_errors.html" %}
-        <div>
-            <label>ID</label>
-            <input type="text" name="username">
-        </div>
-        <div>
-            <label>비밀번호</label>
-            <input type="password" name="password">
-        </div>
-        <button type="submit">로그인</button>
-        <p>계정이 없다면? <a href="{% url 'users:signup' %}">회원가입</a></p>
-    </form>
-</body>
-</html>
+{% extends "index.html" %}
+{% block content %}
+<form method="post" action="{% url 'users:login' %}">
+    {% csrf_token %}
+    
+    <img id="logo" src="static/images/logo.png">
+
+    {% include "form_errors.html" %}
+
+    <div>
+        <label>ID</label>
+        <input type="text" name="username">
+    </div>
+    <div>
+        <label>비밀번호</label>
+        <input type="password" name="password">
+    </div>
+    <button type="submit">로그인</button>
+    <p>계정이 없다면? <a href="{% url 'users:signup' %}">회원가입</a></p>
+</form>
+{% endblock %}

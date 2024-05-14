@@ -1,0 +1,16 @@
+*{  
+    transition: all 0.5s;
+    user-select: none;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-image: linear-gradient(to left, #A3D8FF, #FEEFAD);
+}
+
+#logo {
+    display: block;
+    width: 30vh;
+    margin: 0 auto;
+}

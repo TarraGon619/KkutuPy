@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>끄투파이</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}?after">
-    <link rel="icon" href="static/images/favicon.ico">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
 </head>
 <body>
     {% csrf_token %}
 
-    <img id="logo" src="static/images/logo.png">
+    <img id="logo" src="{% static 'images/logo.png' %}">
 
     <div class="lobby">        
         <ul class="roomList">
@@ -23,13 +23,12 @@
 
         <button id="modalOpenButton">방 생성하기</button>
         {% if user.is_authenticated %}
-        <button id="userButton" onclick=logout()>{{user.username}}<br>(로그아웃)</button>
+        <button id="logoutButton" onclick=logout()>{{user.username}}<br>(로그아웃)</button>
         {% else %}
-        <button id="userButton" onclick=login()>로그인</button>
+        <button id="loginButton">로그인</button>
         {% endif %}
         <!-- <button id="dictionary" onclick="window.open('https://terms.naver.com/')">로그인</button> -->
     </div>
-
 
     <div id="modalContainer" class="hidden">
         <div id="modalContent">
@@ -65,10 +64,22 @@
         </div>
     </div>
 
+    <div id="modalContainer2" class="hidden">
+        <div id="modalContent2">
+            <button id="modalCloseButton2">X</button>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
     <script>
         const modalOpenButton = document.getElementById('modalOpenButton');
         const modalCloseButton = document.getElementById('modalCloseButton');
         const modal = document.getElementById('modalContainer');
+        const modal2 = document.getElementById('modalContainer2');
+
+        const loginButton = document.getElementById('loginButton');
+        const modalCloseButton2 = document.getElementById('modalCloseButton2');
 
         modalOpenButton.addEventListener('click', () => {
         modal.classList.remove('hidden');
@@ -77,6 +88,15 @@
         modalCloseButton.addEventListener('click', () => {
         modal.classList.add('hidden');
         });
+
+        loginButton.addEventListener('click', () => {
+        modal2.classList.remove('hidden');
+        });
+
+        modalCloseButton2.addEventListener('click', () => {
+        modal2.classList.add('hidden');
+        });
+        
         
         function login() {
             location.href="{% url 'users:login' %}"
@@ -88,3 +108,20 @@
     </script>
 </body>
 </html>
+
+<!-- 
+https://wikidocs.net/71259
+프로젝트에다가 base.html 만들고
+이 페이지를 상속시킨다
+로그인 페이지도 거따가 상속시키고
+스태틱도 다시 만들자...
+
+우선순위는
+base.html -> static -> index상속 -> login/singup 상속
+
+이번주 안에 끝내보자!!!
+
+아니면 점프 투 장고 보고
+처음부터 따라서 만들어 보는것도 괜찮을듯
+다만 시간이... 
+-->
