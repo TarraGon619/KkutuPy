@@ -25,7 +25,8 @@
         {% if user.is_authenticated %}
         <button id="logoutButton" onclick=logout()>{{user.username}}<br>(로그아웃)</button>
         {% else %}
-        <button id="loginButton">로그인</button>
+        <!-- <button id="loginButton">로그인</button> -->
+        <button id="loginButton" onclick=login()>로그인</button>
         {% endif %}
         <!-- <button id="dictionary" onclick="window.open('https://terms.naver.com/')">로그인</button> -->
     </div>
@@ -64,13 +65,13 @@
         </div>
     </div>
 
-    <div id="modalContainer2" class="hidden">
+    <!-- <div id="modalContainer2" class="hidden">
         <div id="modalContent2">
             <button id="modalCloseButton2">X</button>
             {% block content %}
             {% endblock %}
         </div>
-    </div>
+    </div> -->
 
     <script>
         const modalOpenButton = document.getElementById('modalOpenButton');
@@ -89,17 +90,17 @@
         modal.classList.add('hidden');
         });
 
-        loginButton.addEventListener('click', () => {
-        modal2.classList.remove('hidden');
-        });
+        // loginButton.addEventListener('click', () => {
+        // modal2.classList.remove('hidden');
+        // });
 
-        modalCloseButton2.addEventListener('click', () => {
-        modal2.classList.add('hidden');
-        });
-        
+        // modalCloseButton2.addEventListener('click', () => {
+        // modal2.classList.add('hidden');
+        // });        
         
         function login() {
-            location.href="{% url 'users:login' %}"
+            location.href="{% url 'users:login' %}" 
+            // window.open("{% url 'users:login' %}", "로그인", "width=400, height=500, top=150, left=500")
         };
 
         function logout() {

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block main %}
+    {% if user.is_authenticated %}
+    {{user.username}}
+    {% else %}
+    guest
+    {% endif %}
+    {{room_id}}
+{% endblock main %}

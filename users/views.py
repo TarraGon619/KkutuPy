@@ -5,7 +5,7 @@ from users.forms import UserCreationForm
 # Create your views here.
 def user_logout(req):
     logout(req)
-    return redirect('lobby')
+    return redirect('/')
 
 def signup(req):
     if req.method == "POST":
@@ -17,7 +17,7 @@ def signup(req):
             user = authenticate(username=username, password=raw_password)
             login(req, user)
             # return render(req, 'main/index.html')
-            return redirect('lobby')
+            return redirect('/')
     else:
         form = UserCreationForm()
     return render(req, 'users/signup.html', {'form':form})

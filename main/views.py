@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
@@ -18,6 +18,9 @@ def lobby(req):
         # print(rooms)
 
         D = req.POST.copy()
+        D.update({'id':len(rooms)+1})
+        room_id = D['id']
+        # D['id'] = len(rooms)+1
         if D['roomName'] == '':
             if D['name'] == '':
                 D['name'] = 'guest'
@@ -29,5 +32,8 @@ def lobby(req):
         if req.POST['roomName'] == "d":
             rooms.clear()
 
-        return render(req, 'main/index.html', {'rooms':rooms})
-        # return render(req, 'main/index.html', {'rooms':rooms, 'Rname':d[0], 'Rmax':d[2], 'Rround':d[3], 'Rtime':d[4]})
+        return redirect(f'room/{room_id}/')
+        # return render(req, 'main/index.html', {'rooms':rooms})
+
+def room(req, room_id):
+    return render(req, 'main/room.html', {'room_id':room_id})
